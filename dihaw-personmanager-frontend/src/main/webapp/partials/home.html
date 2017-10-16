@@ -1,0 +1,176 @@
+	
+	<div class="container">
+	
+	
+		<div class="form-horizontal ">
+			<fieldset class="cadre">
+
+				<!-- First / Last Name -->
+				<legend ng-show="displayMode == 'list'" >Add new User</legend>
+				<legend ng-show="displayMode == 'edit'" >Update User</legend>
+				
+				
+				<div class="form-group">
+					<label class="col-md-2 control-label">First Name</label>
+					<div class="col-md-3 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
+							<input class="form-control" ng-model="personCourant.firstName"/>
+						</div>
+					</div>
+
+					<label class="col-md-2 control-label">Last Name</label>
+					<div class="col-md-3 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+							<input class="form-control" ng-model="personCourant.lastName" />
+						</div>
+					</div>
+				</div>
+				
+
+				<!-- Email / Phone -->
+				<div class="form-group">
+					<label class="col-md-2 control-label">E-Mail</label>
+					<div class="col-md-3 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span> 
+							<input class="form-control" ng-model="personCourant.email">
+						</div>
+					</div>
+	
+					<label class="col-md-2 control-label">Phone</label>
+					<div class="col-md-3 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+							<input class="form-control" ng-model="personCourant.telephone">
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<!-- Address -->
+				<div class="form-group">
+				
+					<label class="col-md-2 control-label">Address</label>  
+				    
+					<div class="col-md-3 inputGroupContainer">
+					    <div class="input-group">
+					        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+					  		<input placeholder="Address" class="form-control" ng-model="personCourant.adresse">
+					    </div>
+				  	</div>
+
+				    <div class="col-md-2 inputGroupContainer">
+					    <div class="input-group">
+					        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+					 		<input placeholder="Zip Code" class="form-control" ng-model="personCourant.zipCode">
+					    </div>
+					</div>
+
+ 
+				    <div class="col-md-3 selectContainer">
+				    
+ 						<select ui-select2 ng-model="personCourant.state"
+                            data-placeholder="..." style="width: 100%" >
+                             <option ng-repeat="state in stateList" value="{{state.id}}">{{state.name}}</option>
+                          </select>
+				    
+				    
+				    
+				    	<!-- div class="input-group">
+				    	
+				    	
+				        	<span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+						    <select class="form-control selectpicker" ng-model="personCourant.state">
+						      <option value=" " >Select the state</option>
+						      <option>Msaken</option>
+						      <option>Tunis</option>
+						      <option>Sousse</option>
+						      <option>Bizerte</option>
+						    </select>
+						    
+						    
+						    
+						    
+						  </div-->
+						</div>
+				
+					</div> <!-- End Address -->
+					
+					
+					<div class="pull-right" style="margin: 0 1% 1% 0;">
+<!-- 						<button class="btn btn-primary" ng-click="searchUsers(personCourant)">Search</button> -->
+						<button class="btn btn-primary" ng-click="updatePerson(personCourant)" ng-show="displayMode == 'edit'"><snan>Update</span></button>
+						<button class="btn btn-primary" ng-click="createPerson(personCourant)" ng-show="displayMode == 'list'"><snan>Add</span></button>
+						<button class="btn btn-primary" ng-click="searchPersons(personCourant)" ng-show="displayMode == 'list'"><snan>Search</span></button>
+						<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+					</div>
+	
+			</fieldset>
+		</div>
+		
+		
+			<legend>Users List</legend>
+
+			<table class="table table-sm table-bordered table-striped">
+				<thead>
+					<tr>
+						<td><strong>First Name</strong></td>
+						<td><strong>Last Name</strong></td>
+						<td><strong>Adresse</strong></td>
+						<td><strong>Email</strong></td>
+						<td><strong>Telephone</strong></td>
+						
+					</tr>
+				</thead>
+				<tr ng-repeat="personne in personnes">
+					<td>{{personne.firstName}} </td>
+					<td>{{ personne.lastName }}</td>
+					<td>{{ personne.adresse }}</td>
+					<td>{{ personne.email }}</td>
+					<td>{{ personne.telephone }}</td>
+					<td>
+						<button 
+							data-nodrag class="btn btn-default btn-sm" 
+							ng-click="getPersonne(personne.id)">	
+								<i class="fa fa-fw fa-pencil"></i>
+						</button>
+						<button 
+							data-nodrag class="btn btn-danger btn-sm" 
+							ng-click="showDeletePersonModal(personne.id, personne.firstName)"
+							data-toggle="modal" data-target="#deleteModalTemplate">
+								<i class="fa fa-fw fa-trash-o"></i>
+							</button>
+					</td>
+		
+				</tr>
+			</table>
+
+			<!-- Modal -->
+			<div id="deleteModalTemplate" class="modal fade" role="dialog">
+				<div class="modal-dialog modal-sm">
+				    <!-- Modal content-->
+			    	<div class="modal-content">
+			      		<div class="modal-header">
+			        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+			        		<h4 class="modal-title">Delete</h4>
+			      		</div>
+			      		<div class="modal-body">
+			        		<p>Are you sure to delete this user?</p>
+			        		<strong>{{firstName}}</strong>
+			      		</div>
+				      	<div class="modal-footer">
+				        	<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deletePerson(userId)">Yes</button>
+				        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				      </div>
+					</div>
+			  	</div>
+			</div>
+		
+	</div>
+	
+	
+
+	
