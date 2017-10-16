@@ -3,6 +3,8 @@ package com.demo.personmanager.dto;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.demo.personmanager.dto.core.BaseResultDTO;
+
 /**
  * @author Wahid Gazzah
  * @since 30/06/2016

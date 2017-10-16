@@ -1,4 +1,4 @@
-package com.demo.personmanager.dto.copy;
+package com.demo.personmanager.dto.core;
 
 /**
  * @author Wahid Gazzah

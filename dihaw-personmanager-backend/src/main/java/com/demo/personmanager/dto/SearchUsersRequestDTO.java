@@ -1,5 +1,7 @@
 package com.demo.personmanager.dto;
 
+import com.demo.personmanager.dto.core.BaseFilterDTO;
+
 /**
  * @author Wahid Gazzah
  * @since 30/06/2016
