@@ -10,10 +10,13 @@ public class BaseResultDTO {
 	
 	private Long nombreResults;
 	
+	private Long pageNumber;
+	private Long pageSize;
+	
 	private Long totalRequest;
 	private Long numberElements;
 	private Long totalPages;
-	private Long pageNumber;
+	
 	private boolean hasPrevious;
 	private boolean haseNext;
 
@@ -57,7 +60,7 @@ public class BaseResultDTO {
 		this.pageNumber = pageNumber;
 	}
 
-	public boolean hasPrevious() {
+	public boolean isHasPrevious() {
 		return hasPrevious;
 	}
 
@@ -65,13 +68,22 @@ public class BaseResultDTO {
 		this.hasPrevious = hasPrevious;
 	}
 
-	public boolean haseNext() {
+	public boolean isHaseNext() {
 		return haseNext;
 	}
 
 	public void setHaseNext(boolean haseNext) {
 		this.haseNext = haseNext;
 	}
+
+	public Long getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(Long pageSize) {
+		this.pageSize = pageSize;
+	}
+	
 	
 	
 	

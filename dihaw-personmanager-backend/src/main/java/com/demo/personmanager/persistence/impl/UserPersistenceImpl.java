@@ -116,18 +116,7 @@ public class UserPersistenceImpl implements IUserPersistence{
 					upper, 
 					IUserPredicate.PERCENT + request.getFirstName().toUpperCase() + IUserPredicate.PERCENT);
 			whereClause.add(criteriaBuilder.and(predicate));
-		}
-		
-		// Set filter.lastName on whereClause if not empty or null
-		if (isNotEmpty(request.getLastName())) {
-			Expression<String> path = root.get(IUserPredicate.PREDICATE_LAST_NAMME);
-			Expression<String> upper = criteriaBuilder.upper(path);
-			Predicate predicate = criteriaBuilder.like(
-					upper, 
-					IUserPredicate.PERCENT + request.getLastName().toUpperCase() + IUserPredicate.PERCENT);
-			whereClause.add(criteriaBuilder.and(predicate));
-		}
-		
+		}		
 		
 		criteriaQuery.select(root).where(whereClause.toArray(new Predicate[] {}));
 		
@@ -154,6 +143,7 @@ public class UserPersistenceImpl implements IUserPersistence{
 	    result.setElements(new TreeSet<SearchUsersElementsResponseDTO>(list));
 	    
 	    result.setNumberElements(count);
+
 
 	    return result;
 	}
