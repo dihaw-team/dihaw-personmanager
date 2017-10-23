@@ -11,11 +11,15 @@
 		<module>dihaw-personmanager-backend</module>
 		<module>dihaw-personmanager-frontend</module>
 		
-		<!-- module>dihaw-personmanager-rest</module>
+		<module>dihaw-personmanager-parent</module>
+		<module>dihaw-personmanager-dto</module>
+		<module>dihaw-personmanager-core</module>
+		
+		<module>dihaw-personmanager-rest</module>
 		<module>dihaw-personmanager-service</module>
 		<module>dihaw-personmanager-domain</module>
-		<module>dihaw-personmanager-persistence </module>
-		<module>dihaw-personmanager-dto</module>
-		<module>dihaw-personmanager-core</module-->
+		<module>dihaw-personmanager-soap</module>
+		<module>dihaw-personmanager-persistence</module>
+
 	</modules>	
 </project>

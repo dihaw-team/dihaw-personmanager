@@ -1,4 +1,4 @@
-package com.demo.personmanager.persistence.copy;
+package com.demo.personmanager.persistence;
 
 public interface IUserPredicate {
 
