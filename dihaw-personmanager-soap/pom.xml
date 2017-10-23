@@ -9,7 +9,7 @@
 	</parent>
 	
 	<artifactId>dihaw-personmanager-soap</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	
 	<dependencies>
 	
